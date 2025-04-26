@@ -1,28 +1,28 @@
 services:
-  database_intranet:
+  database:
     image: postgres
-    container_name: database_intranet
+    container_name: database
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: database_intranet
+      POSTGRES_DB: database
     networks:
-      - intranet-network
+      - network
     ports:
       - "9578:5432"
     volumes:
-      - database_intranet_data:/var/lib/postgresql/data
+      - database_data:/var/lib/postgresql/data
 
-  intranet_backend:
+  backend:
     build:
       context: ./Backend
-    container_name: intranetbackend
+    container_name: backend
     ports:
       - "9876:9876"
     networks:
-      - intranet-network
+      - network
     depends_on:
-      - database_intranet
+      - database
     environment:
       - SPRING_PROFILES_ACTIVE=dev
 #      - SPRING_PROFILES_ACTIVE=prod
@@ -34,12 +34,12 @@ services:
     ports:
       - "4300:4300"
     networks:
-      - intranet-network
+      - network
 
 
 networks:
-  intranet-network:
+  network:
     driver: bridge
 
 volumes:
-  database_intranet_data:
+  database_data:

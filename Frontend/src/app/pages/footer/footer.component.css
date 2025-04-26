@@ -1,0 +1,44 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25vw;
+  width: 100vw;
+  background-color: var(--green04);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1%;
+  height: 100%;
+  width: 100%;
+  max-width: 1600px;
+  background-color: var(--green04);
+}
+
+.column {
+  flex: 1 1 300px;
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+  background-color: var(--green04);
+}
+
+.redesIcons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.icon:hover {
+  transform:scale(1.2);
+}
