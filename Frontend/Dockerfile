@@ -1,0 +1,8 @@
+FROM node:lts AS build
+WORKDIR /app
+COPY package*.json angular.json tsconfig*.json ./
+RUN npm install
+RUN npm install -g @angular/cli
+COPY . .
+#CMD ["ng", "serve"]
+CMD ["ng", "serve", "--configuration=production"]
